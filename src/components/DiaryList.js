@@ -1,18 +1,18 @@
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
 import MyButton from "./MyButton";
-import { useNavigate } from "react-router-dom"; // 추가
+import { useNavigate } from "react-router-dom";
 import DiaryItem from "./DiaryItem";
 
 const sortOptionList = [
   { value: "latest", name: "최신순" },
   { value: "oldest", name: "오래된 순" },
-];
+]
 
 const filterOptionList = [
   { value: "all", name: "전부다" },
   { value: "good", name: "좋은 감정만" },
   { value: "bad", name: "안좋은 감정만" },
-]; // 추가
+]
 
 const ControlMenu = React.memo(({ value, onChange, optionList }) => {
   return (
@@ -31,31 +31,31 @@ const ControlMenu = React.memo(({ value, onChange, optionList }) => {
 })
 
 const DiaryList = ({ diaryList }) => {
-  const navigate = useNavigate();
-  const [sortType, setSortType] = useState("latest");
-  const [filter, setFilter] = useState("all");
+  const navigate = useNavigate(); //특정 행동을 했을 때 해당 주소로 이동
+  const [sortType, setSortType] = useState("latest"); //초기값 최신순으로 보여주기
+  const [filter, setFilter] = useState("all");  //초기값 전부다 보여주기
 
   const getProcessedDiaryList = () => {
-    const filterCallback = (item) => {
+    const filterCallback = (item) => {  //item.emotion과 filter 값에 따라서 True 또는 False 반환
       if (filter === "good") {
         return parseInt(item.emotion) <= 3;
       } else {
         return parseInt(item.emotion) > 3;
       }
-    }; // 추가
+    }
     const compare = (a, b) => {
-      if (sortType === "latest") {
-        return parseInt(b.date) - parseInt(a.date);
+      if (sortType === "latest") {  //sortType에 따라서 date 기준으로 오름차순 또는 내림차순으로 정렬하는 비교 함수
+        return parseInt(b.date) - parseInt(a.date); //내림차순
       } else {
-        return parseInt(a.date) - parseInt(b.date);
+        return parseInt(a.date) - parseInt(b.date); //오름차순
       }
     };
-    const copyList = JSON.parse(JSON.stringify(diaryList));
+    const copyList = JSON.parse(JSON.stringify(diaryList)); //diaryList 객체 문자열로 변환 후 다시 객체로 변환 (= 얕은 복사)
 
-    const filteredList =
-      filter === "all" ? copyList : copyList.filter((it) => filterCallback(it));
+    const filteredList = filter === "all" ? copyList : copyList.filter((it) => filterCallback(it)); //감정점수에 따라 안보여지는 다이어리 처리
 
-    const sortedList = filteredList.sort(compare);
+    const sortedList = filteredList.sort(compare); //작성된 시각에 따라 다이어리 순서 정렬
+
     return sortedList;
   };
 
@@ -63,7 +63,7 @@ const DiaryList = ({ diaryList }) => {
     <div className="DiaryList">
       <div className="menu_wrapper">
         <div className="left_col">
-          <ControlMenu
+          <ControlMenu  //setSortType(e.target.value)
             value={sortType}
             onChange={setSortType}
             optionList={sortOptionList}
@@ -82,7 +82,7 @@ const DiaryList = ({ diaryList }) => {
           />
         </div>
       </div>
-      {getProcessedDiaryList().map((it) => (
+      {getProcessedDiaryList().map((it) => (  //홈 화면에 보여질 다이어리 목록을 props로 전달; 각 다이어리는 DiaryItem에서 구현
         <DiaryItem key={it.id} {...it} />
       ))}
     </div>

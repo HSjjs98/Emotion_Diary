@@ -1,6 +1,6 @@
 import React from "react";
 
-const MyButton = ({ text, onClick, type }) => {
+const MyButton = ({ text, onClick, type }) => { //button type은 button 스타일링을 위함
   return (
     <button
       className={["MyButton", `MyButton_${type}`].join(" ")}
@@ -12,7 +12,7 @@ const MyButton = ({ text, onClick, type }) => {
 };
 
 MyButton.defaultProps = {
-  type: "default",
+  type: "default"
 };
 
 export default MyButton;

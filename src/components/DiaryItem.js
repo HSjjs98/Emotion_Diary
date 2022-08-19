@@ -4,7 +4,7 @@ import MyButton from "./MyButton";
 
 const DiaryItem = ({ id, emotion, content, date }) => {
   const navigate = useNavigate()
-  const strDate = new Date(parseInt(date)).toLocaleDateString();
+  const strDate = new Date(parseInt(date)).toLocaleDateString('ko');  //Date 객체의 날짜 부분을 지역의 언어에 맞는 문자열 표현으로 반환
 
   const goDetail = () => {
     navigate(`/diary/${id}`)
@@ -12,7 +12,8 @@ const DiaryItem = ({ id, emotion, content, date }) => {
 
   const goEdit = () => {
     navigate(`/edit/${id}`)
-  };
+  }
+
   return (
     <div className={"DiaryItem"}>
       <div
@@ -26,7 +27,7 @@ const DiaryItem = ({ id, emotion, content, date }) => {
       </div>
       <div onClick={goDetail} className="info_wrapper">
         <div className="diary_date">{strDate}</div>
-        <div className="diary_content_preview">{content.slice(0, 25)}</div>
+        <div className="diary_content_preview">{content.slice(0, 25)}</div>  {/*다이어리 내용이 너무 길면 25자까지 끊어서 미리 보여주기*/}
       </div>
       <div className="btn_wrapper">
         <MyButton onClick={goEdit} text={"수정하기"} />
