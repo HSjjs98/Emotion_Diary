@@ -111,10 +111,10 @@ const AppRouter = () => { //경로와 component 연결
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/new" element={<New />} />
-        <Route path="/edit/:id" element={<Edit />} /> {/* : 는 path parameter가 올 것임을 의미; id는 임의의 path parameter 이름 */}
-        <Route path="/diary/:id" element={<Diary />} />
+        <Route path="/Emotion_Diary" element={<Home />} />
+        <Route path="/Emotion_Diary/new" element={<New />} />
+        <Route path="/Emotion_Diary/edit/:id" element={<Edit />} /> {/* : 는 path parameter가 올 것임을 의미; id는 임의의 path parameter 이름 */}
+        <Route path="/Emotion_Diary/diary/:id" element={<Diary />} />
       </Routes>
     </BrowserRouter>
   );
