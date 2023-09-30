@@ -56,7 +56,7 @@ const Diary = () => {
             <MyButton
               text={"수정하기"}
               onClick={() => {
-                navigate(`Emotion_Diary/edit/${id}`)
+                navigate(`/Emotion_Diary/edit/${id}`)
               }}
             />
           }
