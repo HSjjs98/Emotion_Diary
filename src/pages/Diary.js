@@ -28,7 +28,7 @@ const Diary = () => {
         setData(targetDiary);
       } else { //타겟 다이어리가 다이어리 리스트에 없다면
         alert("없는 일기입니다.");
-        navigate('/', { replace: true }) //HOME으로 돌아가며 전 페이지로 돌아갈 수 없음
+        navigate('/Emotion_Diary', { replace: true }) //HOME으로 돌아가며 전 페이지로 돌아갈 수 없음
       }
     }
   }, [id, diaryList,navigate]); //타켓 다이어리가 바뀌는 경우, 다이어리 리스트가 바뀌는 경우 보여지는 Data값이 변해야하므로
@@ -56,7 +56,7 @@ const Diary = () => {
             <MyButton
               text={"수정하기"}
               onClick={() => {
-                navigate(`/edit/${id}`)
+                navigate(`Emotion_Diary/edit/${id}`)
               }}
             />
           }

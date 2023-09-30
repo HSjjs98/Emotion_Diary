@@ -21,7 +21,7 @@ const Edit = () => {
         setOriginData(targetDiary)
       } else {
         alert("없는 일기입니다.");
-        navigate('/', { replace: true })  //Home으로 가고 바로 전 페이지로 돌아갈 수 없음
+        navigate('/Emotion_Diary', { replace: true })  //Home으로 가고 바로 전 페이지로 돌아갈 수 없음
       }
     }
   }, [id, diaryList,navigate]);

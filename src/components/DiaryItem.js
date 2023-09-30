@@ -7,11 +7,11 @@ const DiaryItem = ({ id, emotion, content, date }) => {
   const strDate = new Date(parseInt(date)).toLocaleDateString('ko');  //Date 객체의 날짜 부분을 지역의 언어에 맞는 문자열 표현으로 반환
 
   const goDetail = () => {
-    navigate(`/diary/${id}`)
+    navigate(`Emotion_Diary/diary/${id}`)
   };
 
   const goEdit = () => {
-    navigate(`/edit/${id}`)
+    navigate(`Emotion_Diary/edit/${id}`)
   }
 
   return (

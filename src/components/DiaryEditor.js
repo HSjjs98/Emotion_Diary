@@ -33,7 +33,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
   const handleRemove = () => {
     if (window.confirm("정말 삭제하시겠습니까?")) {
       onRemove(originData.id);
-      navigate('/', { replace: true })  //다이어리 삭제 후 Home 화면으로 돌아가며 바로 전 페이지로 돌아갈 수 없음
+      navigate('/Emotion_Diary', { replace: true })  //다이어리 삭제 후 Home 화면으로 돌아가며 바로 전 페이지로 돌아갈 수 없음
     }
   };
 
@@ -53,7 +53,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
       } else {  //기존 일기를 수정하는 경우
         onEdit(originData.id, date, content, emotion);
       }
-      navigate('/', { replace: true })
+      navigate('/Emotion_Diary', { replace: true })
     }
   };
 
